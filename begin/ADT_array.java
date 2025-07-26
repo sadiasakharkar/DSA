@@ -1,3 +1,5 @@
+package begin;
+
 public class ADT_array {
     public static void main(String[] args) {
         int[] arr = new int[5]; // CREATE()
