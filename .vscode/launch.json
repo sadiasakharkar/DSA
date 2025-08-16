@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Loops",
+      "request": "launch",
+      "mainClass": "Java.Loops",
+      "projectName": "DSA_e4c0cbf5"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "lldb",
       "request": "launch",
