@@ -1,7 +1,5 @@
 package BinarySearch;
 
-import java.util.Arrays;
-
 public class OrderAgnosticBS {
     public static void main(String[] args) {
         // int[] arr = { -6, -5, -2, 0, 1, 2, 3, 4, 5 };
