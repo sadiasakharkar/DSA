@@ -1,6 +1,6 @@
 // Q : find numbers with even number of digits in an array // Leetcode 
 
-package Search;
+package LinearSearch;
 
 public class EvenDigits {
     public static void main(String[] args) {

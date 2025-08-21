@@ -1,29 +1,29 @@
-package Search;
+package LinearSearch;
 
-public class LinearTF {
+public class Linear {
     public static void main(String[] args) {
         int[] arr = { 2, 5, 4, 8, 7, 9, 10 };
         int target = 7;
 
-        boolean search = LinearSearch(arr, target);
-        System.out.println("The target element " + target + " is found " + search);
+        int search = LinearSearch(arr, target);
+        System.out.println("The target element " + target + " is found on the index: " + search);
 
     }
 
     // we will return the index of the element where it is found
     // if not found we will return -1
-    static boolean LinearSearch(int[] arr, int target) {
+    static int LinearSearch(int[] arr, int target) {
 
         if (arr.length == 0) {
-            return false;
+            return -1;
         }
 
         for (int index = 0; index <= arr.length; index++) {
             if (arr[index] == target) {
-                return true;
+                return index;
             }
         }
-        return false;
+        return -1;
     }
 
 }

@@ -1,6 +1,6 @@
 // Q : find numbers with even number of digits in an array // Leetcode 
 // this is an optimized version of the EvenDigits class
-package Search;
+package LinearSearch;
 
 import java.lang.Math;
 

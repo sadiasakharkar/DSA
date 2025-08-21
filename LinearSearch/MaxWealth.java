@@ -1,5 +1,5 @@
 // Q: find the maximum wealth among customers // Leetcode
-package Search;
+package LinearSearch;
 
 public class MaxWealth {
     public static void main(String[] args) {

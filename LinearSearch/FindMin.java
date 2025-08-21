@@ -1,4 +1,4 @@
-package Search;
+package LinearSearch;
 
 public class FindMin {
     public static void main(String[] args) {

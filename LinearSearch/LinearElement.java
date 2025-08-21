@@ -1,4 +1,4 @@
-package Search;
+package LinearSearch;
 
 public class LinearElement {
     public static void main(String[] args) {
