@@ -2,9 +2,23 @@ package BubbleSort;
 
 import java.util.*;
 
+import java.util.*;
+
 public class BubbleSort {
     public static void main(String[] args) {
-        int[] arr = { 8, 4, 0, 9, 2, 3, 1, 7 };
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of array: ");
+        int size = sc.nextInt();
+
+        System.out.print("Ente the elements of the array: ");
+        int[] arr = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.println("Array you have entered is : " + Arrays.toString(arr));
+        // int[] arr = { 8, 4, 0, 9, 2, 3, 1, 7 };
         bubbleSort(arr);
         System.out.println(Arrays.toString(arr));
 
