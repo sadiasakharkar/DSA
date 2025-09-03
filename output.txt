@@ -1,1 +1,0 @@
-The value entered for X as 45 and the value for y as 12
