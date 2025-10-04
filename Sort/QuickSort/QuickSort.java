@@ -12,15 +12,6 @@ public class QuickSort {
         }
     }
 
-    static void quicksort(int[] arr, int low, int high) {
-        if (low < high) {
-            int pivot = partition(arr, low, high);
-            quicksort(arr, low, pivot - 1);
-            quicksort(arr, pivot + 1, high);
-
-        }
-    }
-
     static int partition(int[] arr, int low, int high) {
         int pivot = arr[high]; // selection pivot as last element
         int i = low - 1; // i = -1
@@ -42,4 +33,14 @@ public class QuickSort {
         return i; // pivot index
 
     }
+
+    static void quicksort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivot = partition(arr, low, high);
+            quicksort(arr, low, pivot - 1);
+            quicksort(arr, pivot + 1, high);
+
+        }
+    }
+
 }

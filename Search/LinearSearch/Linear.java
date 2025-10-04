@@ -27,3 +27,7 @@ public class Linear {
     }
 
 }
+// Modify linear search to:
+// Search in a string
+// Search in 2D array
+// Count occurrences of a number

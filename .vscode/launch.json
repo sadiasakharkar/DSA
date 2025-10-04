@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BubbleSort",
+      "request": "launch",
+      "mainClass": "BubbleSort.BubbleSort",
+      "projectName": "DSA_e4c0cbf5"
+    },
+    {
+      "type": "java",
+      "name": "StringSearch",
+      "request": "launch",
+      "mainClass": "LinearSearch.StringSearch",
+      "projectName": "DSA_e4c0cbf5"
+    },
+    {
+      "type": "java",
       "name": "Loops",
       "request": "launch",
       "mainClass": "Java.Loops",

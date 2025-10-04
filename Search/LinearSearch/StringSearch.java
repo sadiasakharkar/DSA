@@ -10,7 +10,7 @@ public class StringSearch {
         System.out.println(Arrays.toString(name.toCharArray()));
 
         boolean ans = LinearSearch(name, target);
-        System.out.println("This result is printed using for loop" + ans);
+        System.out.println("This result is printed using for loop " + ans);
 
         boolean ans2 = LinearSearch(name, target);
         System.out.println("This result is printed using for each loop " + ans2);
