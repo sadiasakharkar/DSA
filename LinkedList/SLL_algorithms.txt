@@ -1,17 +1,30 @@
 ==========================
-SINGLY LINKED LIST (SLL) ALGORITHMS
+SINGLY LINKED LIST (SLL) ALGORITHMS WITH TIME COMPLEXITY
 ==========================
 
 Node Structure:
 ---------------
 class Node {
-    int data;       // value stored in node
-    Node next;      // reference to next node
+    int data;       
+    Node next;      
     Node(int d) {
         data = d;
         next = null;
     }
 }
+
+==========================
+ADT
+insertFirst(data)
+insertLast(data)
+insertAt(index, data)
+deleteFirst()
+deleteLast()
+deleteAt(index)
+search(value)
+display()
+isEmpty()
+==========================
 
 Head Pointer:
 -------------
@@ -22,6 +35,7 @@ Node head = null;
 --------------------------
 Precondition: head may be null or point to first node
 Postcondition: New node inserted at beginning; head updated
+Time Complexity: Best = O(1), Average = O(1), Worst = O(1)
 
 Algorithm:
 1. Create a new node N with data = data
@@ -34,6 +48,7 @@ Algorithm:
 --------------------------
 Precondition: head may be null or list exists
 Postcondition: New node inserted at end of list
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
 1. Create a new node N with data = data
@@ -53,6 +68,7 @@ Algorithm:
 --------------------------
 Precondition: 0 ≤ index ≤ length of list
 Postcondition: New node inserted at specified index
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
 1. If index == 0
@@ -74,6 +90,7 @@ Algorithm:
 --------------------------
 Precondition: head != null
 Postcondition: First node removed; head updated
+Time Complexity: Best = O(1), Average = O(1), Worst = O(1)
 
 Algorithm:
 1. If head == null
@@ -87,6 +104,7 @@ Algorithm:
 --------------------------
 Precondition: head != null
 Postcondition: Last node removed
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
 1. If head == null
@@ -106,6 +124,7 @@ Algorithm:
 --------------------------
 Precondition: 0 ≤ index < length of list
 Postcondition: Node at index removed
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
 1. If head == null
@@ -131,6 +150,7 @@ Algorithm:
 --------------------------
 Precondition: Linked list exists
 Postcondition: Prints position if value found; else "Not found"
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
 1. Set ptr = head
@@ -148,6 +168,7 @@ Algorithm:
 --------------------------
 Precondition: Linked list exists
 Postcondition: All nodes printed in order
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
 1. If head == null
@@ -164,6 +185,7 @@ Algorithm:
 --------------------------
 Precondition: Linked list exists
 Postcondition: Returns true if list is empty; false otherwise
+Time Complexity: Best = O(1), Average = O(1), Worst = O(1)
 
 Algorithm:
 1. If head == null
