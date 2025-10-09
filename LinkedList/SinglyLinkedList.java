@@ -46,8 +46,18 @@ public class SinglyLinkedList {
     // 3) insertAt(index, data)
     // ==========================
     void insertAt(int index, int data) {
+        if (index < 0) {
+            System.out.println("Invalid index");
+            return;
+        }
+
         if (index == 0) {
             insertFirst(data);
+            return;
+        }
+
+        if (head == null) {
+            System.out.println("List is empty");
             return;
         }
 

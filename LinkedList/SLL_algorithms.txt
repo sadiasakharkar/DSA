@@ -42,6 +42,7 @@ Algorithm:
 2. Set N.next = head
 3. Update head = N
 4. Return head
+End Algorithm
 
 ==========================
 2) insertLast(data)
@@ -62,6 +63,7 @@ Algorithm:
        End While
        ptr.next = N
 4. Return head
+End Algorithm
 
 ==========================
 3) insertAt(index, data)
@@ -70,7 +72,6 @@ Precondition: 0 ≤ index ≤ length of list
 Postcondition: New node inserted at specified index
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
-Algorithm:
 1. If index == 0
        Call insertFirst(data)
        Return
@@ -81,9 +82,39 @@ Algorithm:
            Print "Invalid index"
            Return
        ptr = ptr.next
-5. N.next = ptr.next
-6. ptr.next = N
-7. Return head
+5. If ptr == null
+       Print "Invalid index"
+       Return
+6. N.next = ptr.next
+7. ptr.next = N
+8. Return head
+End Algorithm
+
+Algorithm insertAt(index, data)
+1. If index < 0
+       Print "Invalid index"
+       Return
+2. If index == 0
+       Call insertFirst(data)
+       Return
+3. If head == null
+       Print "List is empty"
+       Return
+4. Create a new node N with data = data
+5. Set ptr = head
+6. For i = 0 to index - 2
+       If ptr == null
+           Print "Invalid index"
+           Return
+       ptr = ptr.next
+7. If ptr == null
+       Print "Invalid index"
+       Return
+8. N.next = ptr.next
+9. ptr.next = N
+10. Return head
+End Algorithm
+
 
 ==========================
 4) deleteFirst()
@@ -98,6 +129,7 @@ Algorithm:
        Return
 2. head = head.next
 3. Return head
+End Algorithm
 
 ==========================
 5) deleteLast()
@@ -118,6 +150,23 @@ Algorithm:
        ptr = ptr.next
 5. ptr.next = null
 6. Return head
+End Algorithm
+
+
+Algorithm deleteLast()
+1. If head == null
+       Print "List is empty"
+       Return
+2. If head.next == null
+       head = null
+       Return
+3. Set ptr = head
+4. While ptr.next != null AND ptr.next.next != null
+       ptr = ptr.next
+5. ptr.next = null
+6. Return head
+End Algorithm
+
 
 ==========================
 6) deleteAt(index)
@@ -144,6 +193,32 @@ Algorithm:
        Return
 6. ptr.next = ptr.next.next
 7. Return head
+End Algorithm
+
+
+Algorithm deleteAt(index)
+1. If index < 0
+       Print "Invalid index"
+       Return
+2. If head == null
+       Print "List is empty"
+       Return
+3. If index == 0
+       Call deleteFirst()
+       Return
+4. Set ptr = head
+5. For i = 0 to index - 2
+       If ptr == null OR ptr.next == null
+           Print "Invalid index"
+           Return
+       ptr = ptr.next
+6. If ptr.next == null
+       Print "Invalid index"
+       Return
+7. ptr.next = ptr.next.next
+8. Return head
+End Algorithm
+
 
 ==========================
 7) search(value)
@@ -162,6 +237,7 @@ Algorithm:
        ptr = ptr.next
        index++
 4. Print "Value not found"
+End Algorithm
 
 ==========================
 8) display()
@@ -179,6 +255,7 @@ Algorithm:
        Print ptr.data + " -> "
        ptr = ptr.next
 4. Print "null"
+End Algorithm
 
 ==========================
 9) isEmpty()
@@ -192,5 +269,6 @@ Algorithm:
        Return true
 2. Else
        Return false
+End Algorithm
 
 ==========================

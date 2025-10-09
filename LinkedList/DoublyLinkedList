@@ -1,0 +1,223 @@
+// Node structure for DLL
+class Node {
+    int data;
+    Node prev;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+// Doubly Linked List implementation
+class DoublyLinkedList {
+    Node head;
+
+    // 1. insertFirst(data)
+    void insertFirst(int data) {
+        Node temp = new Node(data);
+        temp.next = head;
+        if (head != null) {
+            head.prev = temp;
+        }
+        head = temp;
+    }
+
+    // 2. insertLast(data)
+    void insertLast(int data) {
+        Node temp = new Node(data);
+        if (head == null) {
+            head = temp;
+            return;
+        }
+        Node ptr = head;
+        while (ptr.next != null) {
+            ptr = ptr.next;
+        }
+        ptr.next = temp;
+        temp.prev = ptr;
+    }
+
+    // 3. insertAt(index, data)
+    void insertAt(int index, int data) {
+    if (index < 0) {
+        System.out.println("Invalid index");
+        return;
+    }
+    if (index == 0) {
+        insertFirst(data);
+        return;
+    }
+
+    Node ptr = head;
+    int currentPos = 0;
+
+    // Traverse to node before the desired position
+    while (ptr != null && currentPos < index - 1) {
+        ptr = ptr.next;
+        currentPos++;
+    }
+
+    if (ptr == null) {
+        System.out.println("Invalid index");
+        return;
+    }
+
+    Node temp = new Node(data);
+    temp.next = ptr.next;
+    temp.prev = ptr;
+
+    if (ptr.next != null) {
+        ptr.next.prev = temp;
+    }
+    ptr.next = temp;
+}
+
+
+    // 4. deleteFirst()
+    void deleteFirst() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        head = head.next;
+        if (head != null) {
+            head.prev = null;
+        }
+    }
+
+    // 5. deleteLast()
+    void deleteLast() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        Node ptr = head;
+        while (ptr.next != null) {
+            ptr = ptr.next;
+        }
+        ptr.prev.next = null;
+    }
+
+    // 6. deleteAt(index)
+    void deleteAt(int index) {
+    if (head == null) {
+        System.out.println("List is empty");
+        return;
+    }
+    if (index < 0) {
+        System.out.println("Invalid index");
+        return;
+    }
+    if (index == 0) {
+        deleteFirst();
+        return;
+    }
+
+    Node ptr = head;
+    int currentPos = 0;
+
+    // Traverse to the node to delete
+    while (ptr != null && currentPos < index) {
+        ptr = ptr.next;
+        currentPos++;
+    }
+
+    if (ptr == null) {
+        System.out.println("Invalid index");
+        return;
+    }
+
+    if (ptr.prev != null) {
+        ptr.prev.next = ptr.next;
+    }
+    if (ptr.next != null) {
+        ptr.next.prev = ptr.prev;
+    }
+}
+
+    // 7. search(value)
+    void search(int value) {
+        Node ptr = head;
+        int index = 0;
+        while (ptr != null) {
+            if (ptr.data == value) {
+                System.out.println("Found at index: " + index);
+                return;
+            }
+            ptr = ptr.next;
+            index++;
+        }
+        System.out.println("Value not found");
+    }
+
+    // 8. displayForward()
+    void displayForward() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        Node ptr = head;
+        while (ptr != null) {
+            System.out.print(ptr.data + " <-> ");
+            ptr = ptr.next;
+        }
+        System.out.println("null");
+    }
+
+    // 9. displayReverse()
+    void displayReverse() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        Node ptr = head;
+        // Traverse to the last node
+        while (ptr.next != null) {
+            ptr = ptr.next;
+        }
+        // Print in reverse
+        while (ptr != null) {
+            System.out.print(ptr.data + " <-> ");
+            ptr = ptr.prev;
+        }
+        System.out.println("null");
+    }
+
+    // 10. isEmpty()
+    boolean isEmpty() {
+        return head == null;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        DoublyLinkedList dll = new DoublyLinkedList();
+
+        dll.insertFirst(10);
+        dll.insertLast(20);
+        dll.insertAt(1, 15);
+        dll.displayForward();   // 10 <-> 15 <-> 20 <-> null
+        dll.displayReverse();   // 20 <-> 15 <-> 10 <-> null
+
+        dll.deleteFirst();
+        dll.displayForward();   // 15 <-> 20 <-> null
+
+        dll.deleteLast();
+        dll.displayForward();   // 15 <-> null
+
+        dll.search(15);         // Found at index: 0
+        dll.search(100);        // Value not found
+
+        System.out.println("Is empty? " + dll.isEmpty()); // false
+        dll.deleteAt(0);
+        System.out.println("Is empty? " + dll.isEmpty()); // true
+    }
+}

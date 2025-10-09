@@ -4,12 +4,12 @@ DOUBLY LINKED LIST (DLL) ALGORITHMS
 
 Node Structure:
 ---------------
-class DNode {
+class Node {
     int data;
-    DNode prev;
-    DNode next;
+    Node prev;
+    Node next;
 
-    DNode(int d) {
+    Node(int d) {
         data = d;
         prev = null;
         next = null;
@@ -18,7 +18,7 @@ class DNode {
 
 Head Pointer:
 -------------
-DNode head = null;
+Node head = null;
 
 ADT (Operations List):
 ---------------------
@@ -41,7 +41,7 @@ Postcondition: New node added at the end
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
-1. Create a new node temp = new DNode(data)
+1. Create a new node temp = new Node(data)
 2. Set temp.next = null, temp.prev = null
 3. If head == null
        head = temp
@@ -63,7 +63,7 @@ Postcondition: New node added at start
 Time Complexity: Best = O(1), Average = O(1), Worst = O(1)
 
 Algorithm:
-1. Create new node temp = new DNode(data)
+1. Create new node temp = new Node(data)
 2. temp.next = head
 3. If head != null
        head.prev = temp
@@ -78,7 +78,7 @@ Postcondition: New node added at end
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
-1. Create new node temp = new DNode(data)
+1. Create new node temp = new Node(data)
 2. If head == null
        head = temp
        Return
@@ -91,28 +91,29 @@ Algorithm:
        temp.prev = ptr
 4. Return head
 
-==========================
-4) insertAt(index, data)
---------------------------
-Precondition: 0 ≤ index ≤ length of list
-Postcondition: Node inserted at given index
-Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
-
-Algorithm:
-1. If index == 0
+Algorithm insertAt(index, data)
+1. If index < 0
+       Print "Invalid index"
+       Return
+2. If index == 0
        Call insertFirst(data)
        Return
-2. Create new node temp = new DNode(data)
 3. Set ptr = head
-4. For i = 0 to index - 1
+4. currentPos = 0
+5. While ptr != null AND currentPos < index - 1
        ptr = ptr.next
-5. temp.prev = ptr.prev
-6. temp.next = ptr
-7. If ptr.prev != null
-       ptr.prev.next = temp
-8. ptr.prev = temp
-9. If index == 0
-       head = temp
+       currentPos = currentPos + 1
+6. If ptr == null
+       Print "Invalid index"
+       Return
+7. Create new node temp = new Node(data)
+8. temp.next = ptr.next
+9. temp.prev = ptr
+10. If ptr.next != null
+        ptr.next.prev = temp
+11. ptr.next = temp
+12. Return head
+End Algorithm
 
 ==========================
 5) deleteFirst()
@@ -157,20 +158,31 @@ Precondition: 0 ≤ index < length
 Postcondition: Node at index removed
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
-Algorithm:
+Algorithm deleteAt(index)
 1. If head == null
        Print "List is empty"
        Return
-2. If index == 0
+2. If index < 0
+       Print "Invalid index"
+       Return
+3. If index == 0
        Call deleteFirst()
        Return
-3. Set ptr = head
-4. For i = 0 to index
+4. Set ptr = head
+5. currentPos = 0
+6. While ptr != null AND currentPos < index
        ptr = ptr.next
-5. ptr.prev.next = ptr.next
-6. If ptr.next != null
+       currentPos = currentPos + 1
+7. If ptr == null
+       Print "Invalid index"
+       Return
+8. If ptr.prev != null
+       ptr.prev.next = ptr.next
+9. If ptr.next != null
        ptr.next.prev = ptr.prev
-7. Return head
+10. Return head
+End Algorithm
+
 
 ==========================
 8) search(value)
