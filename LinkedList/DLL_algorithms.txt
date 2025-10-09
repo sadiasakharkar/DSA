@@ -166,31 +166,30 @@ Precondition: 0 ≤ index < length
 Postcondition: Node at index removed
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
-Algorithm deleteAt(index)
-1. If head == null
-       Print "List is empty"
-       Return
-2. If index < 0
+1. If index < 0
        Print "Invalid index"
+       Return
+2. If head == null
+       Print "List is empty"
        Return
 3. If index == 0
        Call deleteFirst()
        Return
 4. Set ptr = head
-5. currentPos = 0
-6. While ptr != null AND currentPos < index
+5. For i = 0 to index - 1
+       If ptr == null OR ptr.next == null
+           Print "Invalid index"
+           Return
        ptr = ptr.next
-       currentPos = currentPos + 1
-7. If ptr == null
+6. If ptr == null
        Print "Invalid index"
        Return
-8. If ptr.prev != null
+7. If ptr.prev != null
        ptr.prev.next = ptr.next
-9. If ptr.next != null
+8. If ptr.next != null
        ptr.next.prev = ptr.prev
-10. Return head
+9. Return head
 End Algorithm
-
 
 ==========================
 8) search(value)

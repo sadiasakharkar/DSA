@@ -111,12 +111,12 @@ void insertAt(int index, int data) {
 
     // 6. deleteAt(index)
     void deleteAt(int index) {
-    if (head == null) {
-        System.out.println("List is empty");
-        return;
-    }
     if (index < 0) {
         System.out.println("Invalid index");
+        return;
+    }
+    if (head == null) {
+        System.out.println("List is empty");
         return;
     }
     if (index == 0) {
@@ -125,12 +125,14 @@ void insertAt(int index, int data) {
     }
 
     Node ptr = head;
-    int currentPos = 0;
 
-    // Traverse to the node to delete
-    while (ptr != null && currentPos < index) {
+    // Traverse to the node at the given index
+    for (int i = 0; i < index; i++) {
+        if (ptr == null) {
+            System.out.println("Invalid index");
+            return;
+        }
         ptr = ptr.next;
-        currentPos++;
     }
 
     if (ptr == null) {
@@ -138,6 +140,7 @@ void insertAt(int index, int data) {
         return;
     }
 
+    // Update links
     if (ptr.prev != null) {
         ptr.prev.next = ptr.next;
     }
@@ -145,7 +148,6 @@ void insertAt(int index, int data) {
         ptr.next.prev = ptr.prev;
     }
 }
-
     // 7. search(value)
     void search(int value) {
         Node ptr = head;
