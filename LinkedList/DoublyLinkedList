@@ -39,9 +39,8 @@ class DoublyLinkedList {
         ptr.next = temp;
         temp.prev = ptr;
     }
-
-    // 3. insertAt(index, data)
-    void insertAt(int index, int data) {
+// 3. insertAt(index, data) using for loop
+void insertAt(int index, int data) {
     if (index < 0) {
         System.out.println("Invalid index");
         return;
@@ -50,14 +49,20 @@ class DoublyLinkedList {
         insertFirst(data);
         return;
     }
+    if (head == null && index > 0) {
+        System.out.println("List is empty");
+        return;
+    }
 
     Node ptr = head;
-    int currentPos = 0;
 
-    // Traverse to node before the desired position
-    while (ptr != null && currentPos < index - 1) {
+    // Traverse to the node before the desired position
+    for (int i = 0; i < index - 1; i++) {
+        if (ptr == null) {
+            System.out.println("Invalid index");
+            return;
+        }
         ptr = ptr.next;
-        currentPos++;
     }
 
     if (ptr == null) {
@@ -74,7 +79,6 @@ class DoublyLinkedList {
     }
     ptr.next = temp;
 }
-
 
     // 4. deleteFirst()
     void deleteFirst() {
