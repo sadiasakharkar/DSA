@@ -94,6 +94,9 @@ Algorithm:
 ==========================
 4) insertAt(index, data)
 --------------------------
+Precondition: 0 ≤ index ≤ length of list
+Postcondition: New node inserted at specified index
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm insertAt(index, data)
 1. If index < 0

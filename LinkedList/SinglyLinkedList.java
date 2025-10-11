@@ -1,4 +1,4 @@
-package LinkedList;
+// package LinkedList;
 
 // ==========================
 // SINGLY LINKED LIST (SLL) IMPLEMENTATION IN JAVA
