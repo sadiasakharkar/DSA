@@ -106,26 +106,38 @@ Algorithm:
 
 ==========================
 4) insertAt(index, data)
-
+--------------------------
 Precondition: 0 ≤ index ≤ length
-Postcondition: Node inserted at given index; head/tail updated if needed
+Postcondition: Node inserted at given index; head/tail updated if needed; circular links maintained
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
-1. If index == 0
-       1.1 Call insertFirst(data)
-       1.2 Return
-2. Create new node temp = new DCNode(data)
-3. Set ptr = head
-4. For i = 0 to index - 1
-       4.1 ptr = ptr.next
-5. temp.prev = ptr.prev
-6. temp.next = ptr
-7. ptr.prev.next = temp
-8. ptr.prev = temp
-9. If index == length
-       9.1 tail = temp
-10. Return head, tail
+1. If index < 0
+       Print "Invalid index"
+       Return
+2. If index == 0
+       Call insertFirst(data)       // head me insert, circularity already handled
+       Return
+3. If head == null AND index > 0
+       Print "List is empty"       // koi node nahi hai, invalid
+       Return
+4. Set ptr = head
+5. For i = 0 to index - 1
+       ptr = ptr.next
+       If ptr == head
+           Break                   // circular wrap, stop loop
+6. Create new node temp = new DCNode(data)
+7. temp.prev = ptr.prev
+8. temp.next = ptr
+9. ptr.prev.next = temp
+10. ptr.prev = temp
+11. If ptr == head
+       tail = temp                 // agar end me insert hua to tail update
+       head.prev = tail
+       tail.next = head
+12. Return head, tail
+==========================
+
 
 ==========================
 5) deleteFirst()
