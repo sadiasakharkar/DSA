@@ -254,3 +254,167 @@ Algorithm:
        Return false
 
 ==========================
+
+$ dcll_time_complexity_easy
+
+1. insertFirst(data)
+Best = O(1)
+List empty → new node becomes head immediately.
+Pointers updated to point to itself.
+Very fast, no walking needed.
+
+Average = O(1)
+List has nodes → just update head and last pointers.
+No iteration required.
+Constant time.
+
+Worst = O(1)
+Even with many nodes → update head and last.
+Size doesn’t matter.
+Always quick.
+
+2. insertLast(data)
+Best = O(1)
+List empty → new node becomes head.
+Head and last pointers updated.
+Done immediately.
+
+Average = O(1)
+List has nodes → update last node pointers.
+No walking through list needed.
+Still very fast.
+
+Worst = O(1)
+Same as best → only pointer updates.
+List size doesn’t affect time.
+Always fast.
+
+3. insertAt(index, data)
+Best = O(1)
+Index 0 → same as insertFirst.
+Update head and last pointers.
+Fastest insertion.
+
+Average = O(n)
+Index in middle → walk through nodes to reach position.
+Update prev and next pointers.
+Time grows with index.
+
+Worst = O(n)
+Index at last → walk through all nodes.
+Update pointers after reaching position.
+Takes the longest time.
+
+4. deleteFirst()
+Best = O(1)
+Remove head → update head and last pointers.
+No walking needed.
+Fastest case.
+
+Average = O(1)
+List has multiple nodes → update pointers only.
+No iteration required.
+Done quickly.
+
+Worst = O(1)
+Even with many nodes → head and last updated.
+List size doesn’t matter.
+Always fast.
+
+5. deleteLast()
+Best = O(1)
+Single node → set head = null.
+No walking needed.
+Fastest case.
+
+Average = O(1)
+List has multiple nodes → update last.prev.next and head.prev.
+No iteration required.
+Done quickly.
+
+Worst = O(1)
+Even with many nodes → only pointer updates.
+Constant time.
+Always fast.
+
+6. deleteAt(index)
+Best = O(1)
+Index 0 → same as deleteFirst.
+Update pointers only.
+Fastest deletion.
+
+Average = O(n)
+Index in middle → walk to that node.
+Update prev and next pointers.
+Time grows with index.
+
+Worst = O(n)
+Index at last → walk through all nodes.
+Update pointers after reaching node.
+Longest time.
+
+7. search(value)
+Best = O(1)
+Target is head → found immediately.
+One check only.
+Fastest case.
+
+Average = O(n)
+Target somewhere in the list → check half nodes on average.
+Time grows with list size.
+Moderate case.
+
+Worst = O(n)
+Target is last or not present → check all nodes.
+Maximum steps needed.
+Longest search time.
+
+8. displayForward()
+Best = O(1)
+Empty list → nothing to print.
+Return immediately.
+Fastest case.
+
+Average = O(n)
+Walk through all nodes from head to last.
+Print each node.
+Time grows with number of nodes.
+
+Worst = O(n)
+All nodes printed.
+Maximum steps taken.
+Longest time.
+
+9. displayReverse()
+Best = O(1)
+Empty list → nothing to print.
+Return immediately.
+Fastest case.
+
+Average = O(n)
+Walk from last to head node.
+Print each element.
+Time grows with number of nodes.
+
+Worst = O(n)
+Print all nodes in reverse.
+Maximum steps needed.
+Longest time.
+
+10. isEmpty()
+Best = O(1)
+Check head → null means empty.
+No iteration needed.
+Always fast.
+
+Average = O(1)
+Always just check head pointer.
+List size doesn’t matter.
+Done instantly.
+
+Worst = O(1)
+Same as best → only head check.
+Constant time.
+Always fast.
+
+$ _

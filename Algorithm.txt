@@ -1,6 +1,9 @@
 Algorithm: LinearSearch(arr, target)
 Precondition: arr is an array, target is the element to search
 Postcondition: Returns the index of target if found; otherwise returns -1
+Linear Search: Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
+
+
 Steps:
 1.  Check if array is empty
     If length(arr) = 0 then
@@ -13,11 +16,13 @@ Steps:
     Return -1
 End Algorithm
 
-
+-------------------------------------------------------------
 
 Algorithm: BinarySearch(arr, target)
 Precondition: arr is a sorted array
 Postcondition: returns index of target if found, else -1
+Binary Search: Time Complexity: Best = O(1), Average = O(log n), Worst = O(log n)
+
 
 1. start = 0
 2. end = length(arr) - 1
@@ -36,11 +41,13 @@ Postcondition: returns index of target if found, else -1
 
 End Algorithm
 
-
+=============================================================
 
 Algorithm: InsertionSort(arr)
 Precondition: arr is an array
 Postcondition: arr is sorted in ascending order
+Insertion Sort: Time Complexity: Best = O(n), Average = O(n²), Worst = O(n²)
+
 
 1. for i = 0 to length(arr) - 2 do        // outer loop for each element
        for j = i + 1 down to 1 do        // move element left in sorted portion
@@ -55,11 +62,31 @@ Postcondition: arr is sorted in ascending order
 End Algorithm
 
 
+Algorithm: InsertionSortDescending(arr)
+Precondition: arr is an array
+Postcondition: arr is sorted in descending order
+Insertion Sort (Descending): Time Complexity: Best = O(n), Average = O(n²), Worst = O(n²)
 
+
+1. for i = 0 to length(arr) - 2 do
+       for j = i + 1 down to 1 do
+           if arr[j] > arr[j-1] then        // FLIPPED sign
+               swap arr[j], arr[j-1]
+           else
+               break
+           end if
+       end for
+2. return arr
+
+End Algorithm
+
+--------------------------------------------------------------------
 
 Algorithm: BubbleSort(arr)
 Precondition: arr is an array
 Postcondition: arr is sorted in ascending order
+Bubble Sort: Time Complexity: Best = O(n), Average = O(n²), Worst = O(n²)
+
 
 1. for i = 0 to length(arr) - 1 do
        swapped = false   // track if any swap happened
@@ -78,11 +105,36 @@ Postcondition: arr is sorted in ascending order
 
 End Algorithm
 
+Algorithm: BubbleSortDescending(arr)
+Precondition: arr is an array
+Postcondition: arr is sorted in descending order
+Bubble Sort (Descending): Time Complexity: Best = O(n), Average = O(n²), Worst = O(n²)
 
+
+1. for i = 0 to length(arr) - 1 do
+       swapped = false
+       
+       for j = 1 to length(arr) - i - 1 do
+           if arr[j] > arr[j-1] then      // Just flip the sign!
+               swap arr[j], arr[j-1]
+               swapped = true
+           end if
+       end for
+       
+       if swapped = false then
+           break
+       end if
+2. return arr
+
+End Algorithm
+
+
+---------------------------------------------------------------------
 
 Algorithm: QuickSort(arr, low, high)
 Precondition: arr is an array, low and high are indices
 Postcondition: arr is sorted in ascending order
+Quick Sort: Time Complexity: Best = O(n log n), Average = O(n log n), Worst = O(n²)
 
 Main Steps:
 1. n = length(arr)
@@ -110,3 +162,90 @@ Function Partition(arr, low, high):
 6. swap arr[i] and arr[high]   // place pivot in correct position
 7. return i    // pivot index
 End Function
+
+-------------------------------------------------------------------------
+
+1. Linear Search
+
+Best Case — O(1)
+The element is found at the very first position.
+Only one comparison is needed, so it finishes immediately.
+This is the fastest situation possible for linear search.
+
+Average Case — O(n)
+The element is somewhere in the middle of the array.
+About half of the elements (n/2) are checked before finding it.
+The number of comparisons grows directly with the size of the list.
+
+Worst Case — O(n)
+The element is at the end or not present at all.
+All n elements must be compared one by one.
+Hence, the time increases linearly with the input size.
+
+⚡ 2. Binary Search
+
+Best Case — O(1)
+The middle element is exactly the target value.
+The element is found in the first comparison itself.
+This happens rarely but is the fastest possible case.
+
+Average Case — O(log n)
+Each step divides the array into half of its previous size.
+It takes around log₂n comparisons to locate the target.
+This makes it much faster than linear search for large data.
+
+Worst Case — O(log n)
+Even if the element is not found, the array keeps halving.
+The process continues until only one element remains.
+Total comparisons are about log₂n before the search ends.
+
+🫧 3. Bubble Sort
+
+Best Case — O(n)
+The array is already sorted in correct order.
+Only one pass through n–1 comparisons is made.
+No swaps are required, so sorting completes quickly.
+
+Average Case — O(n²)
+The elements are randomly arranged in the array.
+Each pass performs several comparisons and swaps.
+It takes roughly n²/2 total operations to sort everything.
+
+Worst Case — O(n²)
+The array is in completely reverse order.
+Every element must be compared and swapped repeatedly.
+This causes the maximum number of passes and operations.
+
+✏️ 4. Insertion Sort
+
+Best Case — O(n)
+The array is already sorted in increasing order.
+Each element is checked once and placed correctly.
+Only n–1 comparisons are made with no shifting needed.
+
+Average Case — O(n²)
+Elements are in random positions within the array.
+Each insertion takes about n/2 comparisons and shifts.
+Hence, total time increases roughly with n²/4 operations.
+
+Worst Case — O(n²)
+The array is sorted in reverse order.
+Each new element must move past all previous ones.
+So, it performs n(n–1)/2 comparisons and many shifts.
+
+⚙️ 5. Quick Sort
+
+Best Case — O(n log n)
+The pivot divides the array into two equal halves each time.
+Each level of recursion handles balanced partitions efficiently.
+Total work is about n × log₂n comparisons to complete sorting.
+
+Average Case — O(n log n)
+Random pivot choices usually make fairly even partitions.
+The recursion depth remains around log₂n levels.
+So, total comparisons stay close to n log₂n on average.
+
+Worst Case — O(n²)
+Pivot always becomes the smallest or largest element.
+This creates highly unbalanced partitions at every step.
+As a result, sorting needs n(n–1)/2 comparisons in total.
