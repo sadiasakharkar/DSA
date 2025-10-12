@@ -136,8 +136,6 @@ Algorithm:
        head.prev = tail
        tail.next = head
 12. Return head, tail
-==========================
-
 
 ==========================
 5) deleteFirst()
@@ -187,20 +185,25 @@ Postcondition: Node at index removed; head/tail updated if needed
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
+
 1. If head == null
-       1.1 Print "List is empty"
-       1.2 Return
+    1.1 Print "List is empty"
+    1.2 Return
 2. If index == 0
-       2.1 Call deleteFirst()
-       2.2 Return
+    2.1 Call deleteFirst()
+    2.2 Return
 3. Set ptr = head
 4. For i = 0 to index - 1
-       4.1 ptr = ptr.next
+    4.1 ptr = ptr.next
+    4.2 If ptr == head
+        Break // circular wrap, stop loop
 5. ptr.prev.next = ptr.next
 6. ptr.next.prev = ptr.prev
-7. If ptr == tail
-       7.1 tail = ptr.prev
-8. Return head, tail
+7.If ptr == tail
+    7.1 tail = ptr.prev
+    7.2 head.prev = tail
+    7.3 tail.next = head
+8.Return head, tail
 
 ==========================
 8) search(value)
