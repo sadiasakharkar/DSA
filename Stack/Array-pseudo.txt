@@ -1,3 +1,15 @@
+Class StackArray
+    max_size = 20
+    top = -1
+    st[20]      // Array to store stack elements
+
+
+Abstract Data Type (ADT): Stack
+Description: A stack is a linear data structure which follows the Last-In-First-Out (LIFO) principle. 
+It supports operations like push (insert), pop (remove), peek (retrieve top element), isEmpty, isFull, 
+and display. Elements are added and removed from the top only.
+
+
 =========================
 Function: isEmpty()
 Precondition: Stack is initialized
