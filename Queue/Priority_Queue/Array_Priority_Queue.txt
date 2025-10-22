@@ -1,14 +1,35 @@
-Class PriorityQueue:
+Class PriorityQueue
     max_size = n
-    data[n]  # array of (value, priority)
+    data[n]      // array of (value, priority)
     size = 0
 
+
+=========================
+Function: isEmpty()
+Precondition: Priority Queue is initialized
+Postcondition: Returns True if queue is empty, else False
+Time Complexity: O(1)
+=========================
 Function isEmpty():
     return size == 0
 
+
+=========================
+Function: isFull()
+Precondition: Priority Queue is initialized
+Postcondition: Returns True if queue is full, else False
+Time Complexity: O(1)
+=========================
 Function isFull():
     return size == max_size
 
+
+=========================
+Function: enqueue(value, priority)
+Precondition: Priority Queue is initialized
+Postcondition: Inserts element with given priority if not full
+Time Complexity: O(1)
+=========================
 Function enqueue(value, priority):
     if isFull():
         print("Queue Overflow")
@@ -17,27 +38,39 @@ Function enqueue(value, priority):
         size = size + 1
         print("Enqueued:", value, "with priority:", priority)
 
+
+=========================
+Function: dequeue()
+Precondition: Priority Queue is initialized
+Postcondition: Removes and returns element with highest priority if not empty
+Time Complexity: O(n)
+=========================
 Function dequeue():
     if isEmpty():
         print("Queue Underflow")
         return None
     else:
-        # Find the element with highest priority
         max_index = 0
-        for i from 1 to size-1:
+        for i from 1 to size - 1:
             if data[i].priority > data[max_index].priority:
                 max_index = i
         item = data[max_index].value
-        # Shift elements to fill the gap
-        for i from max_index to size-2:
-            data[i] = data[i+1]
+        for i from max_index to size - 2:
+            data[i] = data[i + 1]
         size = size - 1
         print("Dequeued:", item)
         return item
 
+
+=========================
+Function: display()
+Precondition: Priority Queue is initialized
+Postcondition: Prints all elements with their priorities
+Time Complexity: O(n)
+=========================
 Function display():
     if isEmpty():
         print("Priority Queue is empty")
     else:
-        for i from 0 to size-1:
+        for i from 0 to size - 1:
             print("Value:", data[i].value, "Priority:", data[i].priority)

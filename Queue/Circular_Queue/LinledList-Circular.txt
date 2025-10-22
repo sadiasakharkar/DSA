@@ -1,28 +1,47 @@
-Class Node:
+Class Node
     data
     next
 
-Class CircularQueueLinkedList:
+
+Class CircularQueueLinkedList
     rear = NULL
 
-# Check if queue is empty
+
+=========================
+Function: isEmpty()
+Precondition: Queue is initialized
+Postcondition: Returns True if queue is empty, else False
+Time Complexity: O(1)
+=========================
 Function isEmpty():
     return rear == NULL
 
-# Enqueue operation
+
+=========================
+Function: enqueue(item)
+Precondition: Queue is initialized
+Postcondition: Inserts element at the rear in circular manner
+Time Complexity: O(1)
+=========================
 Function enqueue(item):
     temp = new Node
     temp.data = item
     if isEmpty():
         rear = temp
-        rear.next = rear  # points to itself
+        rear.next = rear
     else:
         temp.next = rear.next
         rear.next = temp
         rear = temp
     print("Enqueued:", item)
 
-# Dequeue operation
+
+=========================
+Function: dequeue()
+Precondition: Queue is initialized
+Postcondition: Removes and returns element from front if not empty
+Time Complexity: O(1)
+=========================
 Function dequeue():
     if isEmpty():
         print("Queue Underflow")
@@ -30,19 +49,25 @@ Function dequeue():
     else:
         front = rear.next
         item = front.data
-        if rear == front:  # only one node
+        if rear == front:
             rear = NULL
         else:
             rear.next = front.next
         print("Dequeued:", item)
         return item
 
-# Display queue elements
+
+=========================
+Function: display()
+Precondition: Queue is initialized
+Postcondition: Prints all elements from front to rear in circular order
+Time Complexity: O(n) where n = number of elements in queue
+=========================
 Function display():
     if isEmpty():
         print("Queue is empty")
     else:
-        temp = rear.next  # start from front
+        temp = rear.next
         while True:
             print(temp.data)
             if temp == rear:

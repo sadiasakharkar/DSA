@@ -1,18 +1,36 @@
-Class CircularQueueArray:
+Class CircularQueueArray
     max_size = n
     front = -1
     rear = -1
     data[n]
 
-# Check if queue is empty
+
+=========================
+Function: isEmpty()
+Precondition: Queue is initialized
+Postcondition: Returns True if queue is empty, else False
+Time Complexity: O(1)
+=========================
 Function isEmpty():
     return front == -1
 
-# Check if queue is full
+
+=========================
+Function: isFull()
+Precondition: Queue is initialized
+Postcondition: Returns True if queue is full, else False
+Time Complexity: O(1)
+=========================
 Function isFull():
     return (rear + 1) % max_size == front
 
-# Enqueue operation
+
+=========================
+Function: enqueue(item)
+Precondition: Queue is initialized
+Postcondition: Inserts element at rear in circular manner if not full
+Time Complexity: O(1)
+=========================
 Function enqueue(item):
     if isFull():
         print("Queue Overflow")
@@ -24,21 +42,33 @@ Function enqueue(item):
         data[rear] = item
     print("Enqueued:", item)
 
-# Dequeue operation
+
+=========================
+Function: dequeue()
+Precondition: Queue is initialized
+Postcondition: Removes and returns element from front if not empty
+Time Complexity: O(1)
+=========================
 Function dequeue():
     if isEmpty():
         print("Queue Underflow")
         return None
     else:
         item = data[front]
-        if front == rear:  # Only one element
+        if front == rear:
             front = rear = -1
         else:
             front = (front + 1) % max_size
         print("Dequeued:", item)
         return item
 
-# Display queue elements
+
+=========================
+Function: display()
+Precondition: Queue is initialized
+Postcondition: Prints all elements from front to rear in circular order
+Time Complexity: O(n) where n = number of elements in queue
+=========================
 Function display():
     if isEmpty():
         print("Queue is empty")

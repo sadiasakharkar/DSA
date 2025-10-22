@@ -1,15 +1,36 @@
-Class DequeArray:
+Class DequeArray
     max_size = n
     front = -1
     rear = -1
     data[n]
 
+
+=========================
+Function: isEmpty()
+Precondition: Deque is initialized
+Postcondition: Returns True if deque is empty, else False
+Time Complexity: O(1)
+=========================
 Function isEmpty():
     return front == -1
 
-Function isFull():
-    return (front == 0 and rear == max_size-1) or (front == rear + 1)
 
+=========================
+Function: isFull()
+Precondition: Deque is initialized
+Postcondition: Returns True if deque is full, else False
+Time Complexity: O(1)
+=========================
+Function isFull():
+    return (front == 0 and rear == max_size - 1) or (front == rear + 1)
+
+
+=========================
+Function: insertFront(item)
+Precondition: Deque is initialized
+Postcondition: Inserts element at front if not full
+Time Complexity: O(1)
+=========================
 Function insertFront(item):
     if isFull():
         print("Deque Overflow")
@@ -21,6 +42,13 @@ Function insertFront(item):
         front = front - 1
     data[front] = item
 
+
+=========================
+Function: insertRear(item)
+Precondition: Deque is initialized
+Postcondition: Inserts element at rear if not full
+Time Complexity: O(1)
+=========================
 Function insertRear(item):
     if isFull():
         print("Deque Overflow")
@@ -30,6 +58,13 @@ Function insertRear(item):
         rear = (rear + 1) % max_size
     data[rear] = item
 
+
+=========================
+Function: deleteFront()
+Precondition: Deque is initialized
+Postcondition: Removes and returns element from front if not empty
+Time Complexity: O(1)
+=========================
 Function deleteFront():
     if isEmpty():
         print("Deque Underflow")
@@ -42,6 +77,13 @@ Function deleteFront():
             front = (front + 1) % max_size
         return item
 
+
+=========================
+Function: deleteRear()
+Precondition: Deque is initialized
+Postcondition: Removes and returns element from rear if not empty
+Time Complexity: O(1)
+=========================
 Function deleteRear():
     if isEmpty():
         print("Deque Underflow")
@@ -56,6 +98,13 @@ Function deleteRear():
             rear = rear - 1
         return item
 
+
+=========================
+Function: display()
+Precondition: Deque is initialized
+Postcondition: Prints all elements from front to rear in circular order
+Time Complexity: O(n) where n = number of elements in deque
+=========================
 Function display():
     if isEmpty():
         print("Deque is empty")
