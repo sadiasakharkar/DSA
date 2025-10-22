@@ -1,0 +1,68 @@
+1. Reverse a String Using Stack
+--------------------------------
+1. Create an empty stack.
+2. Read the string character by character.
+3. Push each character onto the stack.
+4. Initialize an empty string for the result.
+5. While the stack is not empty, pop a character and append it to the result.
+6. The resulting string is the reversed string.
+
+2. Expression Conversion (Infix → Postfix)
+-------------------------------------------
+1. Create an empty stack for operators and an empty string for postfix expression.
+2. Read the infix expression symbol by symbol.
+3. If the symbol is an operand, append it to the postfix string.
+4. If the symbol is '(', push it onto the stack.
+5. If the symbol is ')', pop and append from the stack until '(' is encountered, then discard '('.
+6. If the symbol is an operator, pop from the stack all operators with higher or equal precedence and append to postfix, then push the current operator.
+7. After reading the expression, pop and append all remaining operators from the stack.
+8. The resulting string is the postfix expression.
+
+3. Expression Evaluation (Postfix)
+-----------------------------------
+1. Create an empty stack for operands.
+2. Read the postfix expression symbol by symbol.
+3. If the symbol is an operand, push it onto the stack.
+4. If the symbol is an operator, pop the top two operands from the stack.
+5. Apply the operator to the operands in correct order.
+6. Push the result back onto the stack.
+7. After processing all symbols, pop the stack to get the final result.
+
+4. Parsing Well-Formed Parentheses
+-----------------------------------
+1. Create an empty stack.
+2. Read the expression symbol by symbol.
+3. If the symbol is an opening bracket '(', '[', '{', push it onto the stack.
+4. If the symbol is a closing bracket ')', ']', '}', check if the stack is empty.
+5. If empty, the expression is not balanced; stop.
+6. Otherwise, pop the top element and check if it matches the closing bracket.
+7. If it doesn’t match, the expression is not balanced; stop.
+8. After processing all symbols, if the stack is empty, the expression is balanced; otherwise, it is not.
+
+5. Number Conversion (Decimal → Binary/Octal/Hexadecimal)
+-----------------------------------------------------------
+1. Create an empty stack.
+2. Divide the decimal number by the target base and push the remainder onto the stack.
+3. Update the decimal number by dividing it by the base.
+4. Repeat steps 2-3 until the decimal number becomes 0.
+5. Initialize an empty string for the result.
+6. While the stack is not empty, pop each element and append it to the result string (use letters for digits ≥10 in hex).
+7. The resulting string is the number in the target base.
+
+6. Function Call Storage (Recursion Simulation)
+-----------------------------------------------
+1. Create an empty stack for activation records.
+2. Push the initial parameters onto the stack.
+3. While the stack is not empty:
+   a. Pop the top activation record.
+   b. If it meets the base case, process the result.
+   c. Otherwise, push new parameters for the next recursive call onto the stack.
+4. Continue until all recursive calls are resolved.
+
+7. System Stack (Tracking Function Calls)
+-----------------------------------------
+1. When a function is called, create an activation record containing parameters, local variables, and return address.
+2. Push the activation record onto the system stack.
+3. Execute the function.
+4. When the function finishes, pop the activation record from the stack.
+5. Resume execution of the previous function using the return address from the popped record.

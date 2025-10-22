@@ -125,6 +125,28 @@ Algorithm insertAt(index, data)
 11. ptr.next = temp
 12. Return head
 End Algorithm
+=========================
+delete(value)
+--------------------------
+Precondition: head != null
+Postcondition: First node with matching value removed; head updated if needed
+Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
+
+1. If head == null
+       Print "List is empty"
+       Return
+2. Set ptr = head
+3. While ptr != null
+       If ptr.data == value
+           If ptr.prev != null
+               ptr.prev.next = ptr.next
+           Else
+               head = ptr.next
+           If ptr.next != null
+               ptr.next.prev = ptr.prev
+           Return head
+       ptr = ptr.next
+4. Print "Value not found"
 
 ==========================
 5) deleteFirst()
@@ -263,6 +285,17 @@ Algorithm:
        Return false
 
 ==========================
+
+Algorithm: sizeDLL()
+
+1. Set ptr = head
+2. count = 0
+3. While ptr != null
+       3.1 count = count + 1
+       3.2 ptr = ptr.next
+4. Print "Size = " + count
+
+=============================
 
 
 $ dll_time_complexity_easy

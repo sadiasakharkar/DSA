@@ -81,6 +81,17 @@ Algorithm:
        3.5 head = temp
 4. Return head, tail
 
+Socho naya VIP guest "Temp" entry gate se ghusta hai.
+Temp bolta hai: “Main VIP hoon, mujhe front mein khada hona hai!” 😎
+Woh seedha sabse aage jaake khada ho jata hai
+
+Now adjustments begin:
+Temp.next = Head → Purana leader (Head) ab uske peeche khada hota hai
+Temp.prev = Tail → Backdoor se temp ne tail ka haath bhi pakad liya (circular)
+Old Head.prev = Temp → Purane leader ne bhi new leader ka haath pakad liya
+Tail.next = Temp → Last wala banda bhi new leader ko accept kar leta hai
+Head = Temp → Ab sab kehte hai: “Haan bhai! Tu hi hamara new leader!”
+
 ==========================
 3) insertLast(data)
 
@@ -103,6 +114,16 @@ Algorithm:
        3.4 head.prev = temp
        3.5 tail = temp
 4. Return head, tail
+
+Ab ek aur banda aata hai — Temp2, lekin ye chill banda hai, kehta hai:
+“Bhai mujhe VIP banne ka scene nahi… main queue ke end mein khada ho jaunga.”
+
+Toh:
+Old Tail.next = Temp2 → Purane last wale ne Temp2 ka haath pakda
+Temp2.prev = Old Tail → Temp2 ne bhi haath wapas pakda
+Temp2.next = Head → Circle maintain, temp2 ne head ka bhi haath pakda
+Head.prev = Temp2 → Head bole: “Okay bhai tu bhi hamara circle mein”
+Tail = Temp2 → Ab circle wale bolte: “Officially tu new tail hai!”
 
 ==========================
 4) insertAt(index, data)
@@ -213,16 +234,19 @@ Postcondition: Prints index if value found; else "Not found"
 Time Complexity: Best = O(1), Average = O(n), Worst = O(n)
 
 Algorithm:
-1. Set ptr = head
-2. index = 0
-3. While ptr != null
-       3.1 If ptr.data == value
-              3.1.1 Print "Found at index: " + index
-              3.1.2 Return
-       3.2 ptr = ptr.next
-       3.3 If ptr == head break
-       3.4 index++
-4. Print "Value not found"
+1. If head == null
+    1.1 Print "List is empty"
+    1.2 Return
+2. Set ptr = head
+3. index = 0
+4. Do
+       4.1 If ptr.data == value
+              4.1.1 Print "Found at index: " + index
+              4.1.2 Return
+       4.2 ptr = ptr.next
+       4.3 index++
+   While ptr != head
+5. Print "Value not found"
 
 ==========================
 9) displayForward()
@@ -236,10 +260,10 @@ Algorithm:
        1.1 Print "List is empty"
        1.2 Return
 2. Set ptr = head
-3. While ptr != null
+3. Do
        3.1 Print ptr.data + " <-> "
        3.2 ptr = ptr.next
-       3.3 If ptr == head break
+   While ptr != head
 4. Print "(head)"
 
 ==========================
@@ -254,10 +278,10 @@ Algorithm:
        1.1 Print "List is empty"
        1.2 Return
 2. Set ptr = tail
-3. While ptr != null
+3. Do
        3.1 Print ptr.data + " <-> "
        3.2 ptr = ptr.prev
-       3.3 If ptr == tail.next break
+   While ptr != tail
 4. Print "(head)"
 
 ==========================

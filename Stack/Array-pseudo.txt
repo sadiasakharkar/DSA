@@ -1,0 +1,84 @@
+Class StackArray:
+    max_size = 20
+    top = -1
+    st[20]  # array to store stack elements
+
+# =========================
+# Function: isEmpty()
+# Precondition: Stack is initialized
+# Postcondition: Returns True if stack is empty, else False
+# Time Complexity: O(1) for best, avg, worst
+# =========================
+Function isEmpty():
+    if top == -1:
+        return True
+    else:
+        return False
+
+# =========================
+# Function: isFull()
+# Precondition: Stack is initialized
+# Postcondition: Returns True if stack is full, else False
+# Time Complexity: O(1)
+# =========================
+Function isFull():
+    if top == max_size - 1:
+        return True
+    else:
+        return False
+
+# =========================
+# Function: push(data)
+# Precondition: Stack is initialized
+# Postcondition: Adds element to top if not full
+# Time Complexity: O(1)
+# =========================
+Function push(data):
+    if isFull():
+        print("Stack Overflow - Cannot push", data)
+    else:
+        top = top + 1
+        st[top] = data
+        print("Pushed element:", data)
+
+# =========================
+# Function: pop()
+# Precondition: Stack is initialized and not empty
+# Postcondition: Removes and returns top element, or prints underflow
+# Time Complexity: O(1)
+# =========================
+Function pop():
+    if isEmpty():
+        print("Stack Underflow - Stack is empty")
+        return None
+    else:
+        data = st[top]
+        top = top - 1
+        print("Popped element:", data)
+        return data
+
+# =========================
+# Function: peek()
+# Precondition: Stack is initialized
+# Postcondition: Returns top element without removing it
+# Time Complexity: O(1)
+# =========================
+Function peek():
+    if isEmpty():
+        print("Stack is empty - Nothing to peek")
+        return None
+    else:
+        return st[top]
+
+# =========================
+# Function: display()
+# Precondition: Stack is initialized
+# Postcondition: Prints all elements from top to bottom
+# Time Complexity: O(n) where n = number of elements in stack
+# =========================
+Function display():
+    if isEmpty():
+        print("Stack is empty")
+    else:
+        for i from top down to 0:
+            print(st[i])

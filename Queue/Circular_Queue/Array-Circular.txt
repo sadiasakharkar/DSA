@@ -1,0 +1,51 @@
+Class CircularQueueArray:
+    max_size = n
+    front = -1
+    rear = -1
+    data[n]
+
+# Check if queue is empty
+Function isEmpty():
+    return front == -1
+
+# Check if queue is full
+Function isFull():
+    return (rear + 1) % max_size == front
+
+# Enqueue operation
+Function enqueue(item):
+    if isFull():
+        print("Queue Overflow")
+    else if isEmpty():
+        front = rear = 0
+        data[rear] = item
+    else:
+        rear = (rear + 1) % max_size
+        data[rear] = item
+    print("Enqueued:", item)
+
+# Dequeue operation
+Function dequeue():
+    if isEmpty():
+        print("Queue Underflow")
+        return None
+    else:
+        item = data[front]
+        if front == rear:  # Only one element
+            front = rear = -1
+        else:
+            front = (front + 1) % max_size
+        print("Dequeued:", item)
+        return item
+
+# Display queue elements
+Function display():
+    if isEmpty():
+        print("Queue is empty")
+    else:
+        i = front
+        while True:
+            print(data[i])
+            if i == rear:
+                break
+            i = (i + 1) % max_size

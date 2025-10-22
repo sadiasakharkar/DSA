@@ -252,8 +252,22 @@ Algorithm:
        Return true
 2. Else
        Return false
+==========================================
 
-==========================
+Algorithm: sizeDCLL()
+
+1. If head == null
+       1.1 Print "Size = 0"
+       1.2 Return
+2. Set ptr = head
+3. count = 0
+4. Do
+       4.1 count = count + 1
+       4.2 ptr = ptr.next
+   While ptr != head
+5. Print "Size = " + count
+
+==================================
 
 $ dcll_time_complexity_easy
 

@@ -1,0 +1,43 @@
+Class PriorityQueue:
+    max_size = n
+    data[n]  # array of (value, priority)
+    size = 0
+
+Function isEmpty():
+    return size == 0
+
+Function isFull():
+    return size == max_size
+
+Function enqueue(value, priority):
+    if isFull():
+        print("Queue Overflow")
+    else:
+        data[size] = (value, priority)
+        size = size + 1
+        print("Enqueued:", value, "with priority:", priority)
+
+Function dequeue():
+    if isEmpty():
+        print("Queue Underflow")
+        return None
+    else:
+        # Find the element with highest priority
+        max_index = 0
+        for i from 1 to size-1:
+            if data[i].priority > data[max_index].priority:
+                max_index = i
+        item = data[max_index].value
+        # Shift elements to fill the gap
+        for i from max_index to size-2:
+            data[i] = data[i+1]
+        size = size - 1
+        print("Dequeued:", item)
+        return item
+
+Function display():
+    if isEmpty():
+        print("Priority Queue is empty")
+    else:
+        for i from 0 to size-1:
+            print("Value:", data[i].value, "Priority:", data[i].priority)

@@ -1,0 +1,50 @@
+Class Node:
+    data
+    next
+
+Class CircularQueueLinkedList:
+    rear = NULL
+
+# Check if queue is empty
+Function isEmpty():
+    return rear == NULL
+
+# Enqueue operation
+Function enqueue(item):
+    temp = new Node
+    temp.data = item
+    if isEmpty():
+        rear = temp
+        rear.next = rear  # points to itself
+    else:
+        temp.next = rear.next
+        rear.next = temp
+        rear = temp
+    print("Enqueued:", item)
+
+# Dequeue operation
+Function dequeue():
+    if isEmpty():
+        print("Queue Underflow")
+        return None
+    else:
+        front = rear.next
+        item = front.data
+        if rear == front:  # only one node
+            rear = NULL
+        else:
+            rear.next = front.next
+        print("Dequeued:", item)
+        return item
+
+# Display queue elements
+Function display():
+    if isEmpty():
+        print("Queue is empty")
+    else:
+        temp = rear.next  # start from front
+        while True:
+            print(temp.data)
+            if temp == rear:
+                break
+            temp = temp.next

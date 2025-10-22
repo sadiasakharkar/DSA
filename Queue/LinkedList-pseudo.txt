@@ -1,0 +1,54 @@
+Class Node:
+    data
+    link
+
+Class QueueLinkedList:
+    front = NULL
+    rear = NULL
+
+# Check if Queue is empty
+Function isEmpty():
+    if front == NULL:
+        return True
+    else:
+        return False
+
+# Create a new node
+Function create_node(data):
+    node = new Node
+    node.data = data
+    node.link = NULL
+    return node
+
+# Enqueue operation
+Function enqueue(item):
+    temp = create_node(item)
+    if rear == NULL:  # Queue is empty
+        front = rear = temp
+    else:
+        rear.link = temp
+        rear = temp
+    print("Enqueued:", item)
+
+# Dequeue operation
+Function dequeue():
+    if isEmpty():
+        print("Queue Underflow - Queue is empty")
+        return None
+    else:
+        item = front.data
+        front = front.link
+        if front == NULL:  # Queue became empty
+            rear = NULL
+        print("Dequeued:", item)
+        return item
+
+# Display Queue elements
+Function display():
+    if isEmpty():
+        print("Queue is empty")
+    else:
+        temp = front
+        while temp != NULL:
+            print(temp.data)
+            temp = temp.link

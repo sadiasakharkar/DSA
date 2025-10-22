@@ -1,0 +1,86 @@
+Class Node:
+    data
+    link
+
+Class StackLinkedList:
+    top = NULL
+
+# =========================
+# Function: isEmpty()
+# Precondition: Stack initialized
+# Postcondition: Returns True if stack is empty, else False
+# Time Complexity: O(1)
+# =========================
+Function isEmpty():
+    if top == NULL:
+        return True
+    else:
+        return False
+
+# =========================
+# Function: create_node(data)
+# Precondition: Data is valid
+# Postcondition: Returns new node with data
+# Time Complexity: O(1)
+# =========================
+Function create_node(data):
+    node = new Node
+    node.data = data
+    node.link = NULL
+    return node
+
+# =========================
+# Function: push(data)
+# Precondition: Stack initialized
+# Postcondition: Inserts node at top
+# Time Complexity: O(1)
+# =========================
+Function push(data):
+    temp = create_node(data)
+    temp.link = top
+    top = temp
+    print("Pushed element:", data)
+
+# =========================
+# Function: pop()
+# Precondition: Stack initialized
+# Postcondition: Removes and returns top element, or prints underflow
+# Time Complexity: O(1)
+# =========================
+Function pop():
+    if isEmpty():
+        print("Stack Underflow - Stack is empty")
+        return None
+    else:
+        val = top.data
+        top = top.link
+        print("Popped element:", val)
+        return val
+
+# =========================
+# Function: peek()
+# Precondition: Stack initialized
+# Postcondition: Returns top element without removing
+# Time Complexity: O(1)
+# =========================
+Function peek():
+    if isEmpty():
+        print("Stack is empty - Nothing to peek")
+        return None
+    else:
+        return top.data
+
+# =========================
+# Function: display()
+# Precondition: Stack initialized
+# Postcondition: Prints all elements from top to bottom
+# Time Complexity: O(n) where n = number of elements
+# =========================
+Function display():
+    if isEmpty():
+        print("Stack is empty")
+    else:
+        temp = top
+        while temp != NULL:
+            print(temp.data)
+            temp = temp.link

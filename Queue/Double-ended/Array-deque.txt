@@ -1,0 +1,68 @@
+Class DequeArray:
+    max_size = n
+    front = -1
+    rear = -1
+    data[n]
+
+Function isEmpty():
+    return front == -1
+
+Function isFull():
+    return (front == 0 and rear == max_size-1) or (front == rear + 1)
+
+Function insertFront(item):
+    if isFull():
+        print("Deque Overflow")
+    else if isEmpty():
+        front = rear = 0
+    else if front == 0:
+        front = max_size - 1
+    else:
+        front = front - 1
+    data[front] = item
+
+Function insertRear(item):
+    if isFull():
+        print("Deque Overflow")
+    else if isEmpty():
+        front = rear = 0
+    else:
+        rear = (rear + 1) % max_size
+    data[rear] = item
+
+Function deleteFront():
+    if isEmpty():
+        print("Deque Underflow")
+        return None
+    else:
+        item = data[front]
+        if front == rear:
+            front = rear = -1
+        else:
+            front = (front + 1) % max_size
+        return item
+
+Function deleteRear():
+    if isEmpty():
+        print("Deque Underflow")
+        return None
+    else:
+        item = data[rear]
+        if front == rear:
+            front = rear = -1
+        else if rear == 0:
+            rear = max_size - 1
+        else:
+            rear = rear - 1
+        return item
+
+Function display():
+    if isEmpty():
+        print("Deque is empty")
+    else:
+        i = front
+        while True:
+            print(data[i])
+            if i == rear:
+                break
+            i = (i + 1) % max_size
