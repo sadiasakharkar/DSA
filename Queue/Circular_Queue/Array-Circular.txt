@@ -12,8 +12,10 @@ Postcondition: Returns True if queue is empty, else False
 Time Complexity: O(1)
 =========================
 Function isEmpty():
-    return front == -1
-
+    if front == -1:
+        return True
+    else:
+        return False
 
 =========================
 Function: isFull()
@@ -22,8 +24,10 @@ Postcondition: Returns True if queue is full, else False
 Time Complexity: O(1)
 =========================
 Function isFull():
-    return (rear + 1) % max_size == front
-
+    if (rear + 1) % max_size == front:
+        return True
+    else:
+        return False
 
 =========================
 Function: enqueue(item)
