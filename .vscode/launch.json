@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BST",
+      "request": "launch",
+      "mainClass": "Tree.BinarySearchTree.BST",
+      "projectName": "DSA_e4c0cbf5"
+    },
+    {
+      "type": "java",
+      "name": "BinaryTree",
+      "request": "launch",
+      "mainClass": "Tree.BinaryTree",
+      "projectName": "DSA_e4c0cbf5"
+    },
+    {
+      "type": "java",
       "name": "BubbleSort",
       "request": "launch",
       "mainClass": "BubbleSort.BubbleSort",

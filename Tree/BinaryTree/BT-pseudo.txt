@@ -1,0 +1,267 @@
+===============================
+BINARY TREE AS ABSTRACT DATA TYPE
+===============================
+
+Definition:
+Binary Tree ADT defines operations to create, insert, delete, search, 
+and traverse nodes arranged hierarchically using linked structure.
+
+
+----------------------------------------------------------
+Function Name: createTree()
+----------------------------------------------------------
+Precondition: Tree is empty
+Postcondition: Root node is created
+Time Complexity: O(1)
+
+Pseudocode:
+Function createTree()
+    Input value
+    root = new Node(value)
+    Print "Root created with value", value
+End Function
+
+
+----------------------------------------------------------
+Function Name: insertNode()
+----------------------------------------------------------
+Precondition: Tree already created
+Postcondition: New node inserted to left or right of parent
+Time Complexity: O(n)
+
+Pseudocode:
+Function insertNode()
+    If root is null then
+        Print "Tree is empty"
+        Return
+    End If
+
+    Input parentValue
+    parent = findNode(root, parentValue)
+
+    If parent is null then
+        Print "Parent not found"
+        Return
+    End If
+
+    Input newValue
+    Input direction  // L for left, R for right
+    newNode = new Node(newValue)
+
+    If direction is 'L' then
+        If parent.left is null then
+            parent.left = newNode
+            Print "Inserted LEFT of parent"
+        Else
+            Print "Left child already exists"
+        End If
+    Else If direction is 'R' then
+        If parent.right is null then
+            parent.right = newNode
+            Print "Inserted RIGHT of parent"
+        Else
+            Print "Right child already exists"
+        End If
+    Else
+        Print "Invalid direction"
+    End If
+End Function
+
+
+----------------------------------------------------------
+Function Name: findNode(root, value)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Returns reference of node if found else null
+Time Complexity: O(n)
+
+Pseudocode:
+Function findNode(root, value)
+    If root is null then
+        Return null
+    End If
+    If root.data = value then
+        Return root
+    End If
+
+    left = findNode(root.left, value)
+    If left is not null then
+        Return left
+    End If
+
+    Return findNode(root.right, value)
+End Function
+
+
+----------------------------------------------------------
+Function Name: search(root, key)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Returns true if key found else false
+Time Complexity: O(n)
+
+Pseudocode:
+Function search(root, key)
+    If root is null then
+        Return false
+    End If
+    If root.data = key then
+        Return true
+    End If
+    Return search(root.left, key) OR search(root.right, key)
+End Function
+
+
+----------------------------------------------------------
+Function Name: inorder(root)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Displays nodes in L Root R order
+Time Complexity: O(n)
+
+Pseudocode:
+Function inorder(root)
+    If root is null then
+        Return
+    End If
+    inorder(root.left)
+    Print root.data
+    inorder(root.right)
+End Function
+
+
+----------------------------------------------------------
+Function Name: preorder(root)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Displays nodes in Root L R order
+Time Complexity: O(n)
+
+Pseudocode:
+Function preorder(root)
+    If root is null then
+        Return
+    End If
+    Print root.data
+    preorder(root.left)
+    preorder(root.right)
+End Function
+
+
+----------------------------------------------------------
+Function Name: postorder(root)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Displays nodes in L R Root order
+Time Complexity: O(n)
+
+Pseudocode:
+Function postorder(root)
+    If root is null then
+        Return
+    End If
+    postorder(root.left)
+    postorder(root.right)
+    Print root.data
+End Function
+
+
+----------------------------------------------------------
+Function Name: getDeepestRightmostNode(root)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Returns reference of deepest rightmost node
+Time Complexity: O(n)
+
+Pseudocode:
+Function getDeepestRightmostNode(root)
+    If root is null then
+        Return null
+    End If
+
+    Create empty queue q
+    Enqueue root into q
+
+    While q is not empty do
+        temp = Dequeue q
+        If temp.left is not null then
+            Enqueue temp.left
+        End If
+        If temp.right is not null then
+            Enqueue temp.right
+        End If
+    End While
+    Return temp
+End Function
+
+
+----------------------------------------------------------
+Function Name: delete(root, key)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Deletes node with given key
+Time Complexity: O(n)
+
+Pseudocode:
+Function delete(root, key)
+    If root is null then
+        Print "Tree empty"
+        Return
+    End If
+
+    Create queue q
+    Enqueue root
+    temp = null
+    keyNode = null
+
+    While q is not empty do
+        temp = Dequeue q
+        If temp.data = key then
+            keyNode = temp
+        End If
+        If temp.left is not null then
+            Enqueue temp.left
+        End If
+        If temp.right is not null then
+            Enqueue temp.right
+        End If
+    End While
+
+    If keyNode is not null then
+        deepest = getDeepestRightmostNode(root)
+        keyNode.data = deepest.data
+        deleteDeepest(root, deepest)
+        Print "Node deleted"
+    Else
+        Print "Node not found"
+    End If
+End Function
+
+
+----------------------------------------------------------
+Function Name: deleteDeepest(root, delNode)
+----------------------------------------------------------
+Precondition: Tree exists
+Postcondition: Deletes deepest node from tree
+Time Complexity: O(n)
+
+Pseudocode:
+Function deleteDeepest(root, delNode)
+    Create queue q
+    Enqueue root
+    While q is not empty do
+        temp = Dequeue q
+        If temp.left = delNode then
+            temp.left = null
+            Return
+        Else If temp.left is not null then
+            Enqueue temp.left
+        End If
+        If temp.right = delNode then
+            temp.right = null
+            Return
+        Else If temp.right is not null then
+            Enqueue temp.right
+        End If
+    End While
+End Function

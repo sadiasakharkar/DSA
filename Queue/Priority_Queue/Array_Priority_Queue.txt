@@ -3,32 +3,44 @@ Class PriorityQueue
     data[n]      // array of (value, priority)
     size = 0
 
-
 =========================
 Function: isEmpty()
 Precondition: Priority Queue is initialized
 Postcondition: Returns True if queue is empty, else False
 Time Complexity: O(1)
+Edge Cases:
+- Queue is empty initially (size == 0)
+- Queue becomes empty after dequeuing all elements
 =========================
 Function isEmpty():
-    return size == 0
-
+    if size == 0:
+        return True
+    else:
+        return False
 
 =========================
 Function: isFull()
 Precondition: Priority Queue is initialized
 Postcondition: Returns True if queue is full, else False
 Time Complexity: O(1)
+Edge Cases:
+- Queue is full when size == max_size
 =========================
 Function isFull():
-    return size == max_size
-
+    if size == max_size:
+        return True
+    else:
+        return False
 
 =========================
 Function: enqueue(value, priority)
 Precondition: Priority Queue is initialized
 Postcondition: Inserts element with given priority if not full
 Time Complexity: O(1)
+Edge Cases:
+- Queue overflow: cannot enqueue if queue is full
+- First element insertion (size == 0)
+- Negative or zero priority (optional)
 =========================
 Function enqueue(value, priority):
     if isFull():
@@ -38,12 +50,15 @@ Function enqueue(value, priority):
         size = size + 1
         print("Enqueued:", value, "with priority:", priority)
 
-
 =========================
 Function: dequeue()
 Precondition: Priority Queue is initialized
 Postcondition: Removes and returns element with highest priority if not empty
 Time Complexity: O(n)
+Edge Cases:
+- Queue underflow: cannot dequeue if queue is empty
+- Multiple elements with same highest priority: removes first one encountered
+- Last element in the queue: size becomes 0 after removal
 =========================
 Function dequeue():
     if isEmpty():
@@ -61,12 +76,14 @@ Function dequeue():
         print("Dequeued:", item)
         return item
 
-
 =========================
 Function: display()
 Precondition: Priority Queue is initialized
 Postcondition: Prints all elements with their priorities
 Time Complexity: O(n)
+Edge Cases:
+- Queue is empty: prints “Priority Queue is empty”
+- Single element queue: prints that element only
 =========================
 Function display():
     if isEmpty():

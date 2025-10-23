@@ -19,10 +19,10 @@ Function isEmpty():
 
 =========================
 Function: isFull()
-Precondition: Queue is initialized
-Postcondition: Returns True if queue is full, else False
-Time Complexity: O(1)
-=========================
+Precondition: Queue is initialized                                                  max_size = 5
+Postcondition: Returns True if queue is full, else False                            front = 2, rear = 1
+Time Complexity: O(1)                                                               (rear + 1) % 5 = 2
+=========================                                                           2 == front → queue is full
 Function isFull():
     if (rear + 1) % max_size == front:
         return True
