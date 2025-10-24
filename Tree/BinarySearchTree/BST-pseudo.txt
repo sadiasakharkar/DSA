@@ -7,183 +7,159 @@ Binary Search Tree ADT defines operations to create, insert, search,
 delete, and traverse nodes in a hierarchical structure
 where each left child is less than parent and right child is greater than parent.
 
-
 ----------------------------------------------------------
-Function Name: createTree()
+createTree()
 ----------------------------------------------------------
-Precondition: Tree is empty.
-Postcondition: Root node is created with user input value.
+Precondition: Tree is empty
+Postcondition: Root node is created with user input value
 Time Complexity: O(1)
 
-Pseudocode:
-Function createTree()
-    Input value for root
-    root equals new Node(value)
-    Print "Root created with value" value
-End Function
-
+1. Input value for root
+2. root = new Node(value)
+3. root.parent = null   // root has no parent
+4. Print "Root created with value", value
 
 ----------------------------------------------------------
-Function Name: insert(root, value)
+insert(root, value)
 ----------------------------------------------------------
-Precondition: Tree exists.
-Postcondition: Node inserted maintaining BST property.
-Time Complexity:
-    Best Case O(log n)
-    Average Case O(log n)
-    Worst Case O(n) if tree is skewed
+Precondition: Tree exists
+Postcondition: Node inserted maintaining BST property
+Time Complexity: Best = O(log n), Average = O(log n), Worst = O(n)
 
-Pseudocode:
-Function insert(root, value)
-    If root is null then
-        root equals new Node(value)
-        Return root
-    End If
-
-    If value less than root.data then
-        root.left equals insert(root.left, value)
-    Else if value greater than root.data then
-        root.right equals insert(root.right, value)
-    Else
-        Print "Duplicate value ignored"
-    End If
-
-    Return root
-End Function
-
+1. If root == null
+       root = new Node(value)
+       root.parent = parent_node  // set parent pointer
+       Return root
+2. If value < root.data
+       root.left = insert(root.left, value)
+       root.left.parent = root
+3. Else if value > root.data
+       root.right = insert(root.right, value)
+       root.right.parent = root
+4. Else
+       Print "Duplicate value ignored"
+5. Return root
 
 ----------------------------------------------------------
-Function Name: search(root, key)
+search(root, key)
 ----------------------------------------------------------
-Precondition: Tree exists.
-Postcondition: Returns true if key is found, false otherwise.
-Time Complexity:
-    Best Case O(1)
-    Average Case O(log n)
-    Worst Case O(n) if tree is skewed
+Precondition: Tree exists
+Postcondition: Returns true if key is found, false otherwise
+Time Complexity: Best = O(1), Average = O(log n), Worst = O(n)
 
-Pseudocode:
-Function search(root, key)
-    If root is null then
-        Return false
-    End If
-    If key equals root.data then
-        Return true
-    Else if key less than root.data then
-        Return search(root.left, key)
-    Else
-        Return search(root.right, key)
-    End If
-End Function
-
+1. If root == null
+       Return false
+2. If key == root.data
+       Return true
+3. Else if key < root.data
+       Return search(root.left, key)
+4. Else
+       Return search(root.right, key)
 
 ----------------------------------------------------------
-Function Name: inorder(root)
+inorder(root)
 ----------------------------------------------------------
-Precondition: Tree exists.
-Postcondition: Prints nodes in ascending order.
+Precondition: Tree exists
+Postcondition: Prints nodes in ascending order
 Time Complexity: O(n)
 
-Pseudocode:
-Function inorder(root)
-    If root is null then
-        Return
-    End If
-    inorder(root.left)
-    Print root.data
-    inorder(root.right)
-End Function
-
+1. If root == null
+       Return
+2. inorder(root.left)
+3. Print root.data
+4. inorder(root.right)
 
 ----------------------------------------------------------
-Function Name: preorder(root)
+preorder(root)
 ----------------------------------------------------------
-Precondition: Tree exists.
-Postcondition: Prints nodes in Root Left Right order.
+Precondition: Tree exists
+Postcondition: Prints nodes in Root Left Right order
 Time Complexity: O(n)
 
-Pseudocode:
-Function preorder(root)
-    If root is null then
-        Return
-    End If
-    Print root.data
-    preorder(root.left)
-    preorder(root.right)
-End Function
-
+1. If root == null
+       Return
+2. Print root.data
+3. preorder(root.left)
+4. preorder(root.right)
 
 ----------------------------------------------------------
-Function Name: postorder(root)
+postorder(root)
 ----------------------------------------------------------
-Precondition: Tree exists.
-Postcondition: Prints nodes in Left Right Root order.
+Precondition: Tree exists
+Postcondition: Prints nodes in Left Right Root order
 Time Complexity: O(n)
 
-Pseudocode:
-Function postorder(root)
-    If root is null then
-        Return
-    End If
-    postorder(root.left)
-    postorder(root.right)
-    Print root.data
-End Function
-
+1. If root == null
+       Return
+2. postorder(root.left)
+3. postorder(root.right)
+4. Print root.data
 
 ----------------------------------------------------------
-Function Name: findMin(root)
+findMin(root)
 ----------------------------------------------------------
-Precondition: Tree exists.
-Postcondition: Returns node with minimum value in subtree.
-Time Complexity:
-    Best Case O(log n)
-    Average Case O(log n)
-    Worst Case O(n)
+Precondition: Tree exists
+Postcondition: Returns node with minimum value in subtree
+Time Complexity: Best = O(log n), Average = O(log n), Worst = O(n)
 
-Pseudocode:
-Function findMin(root)
-    While root.left is not null do
-        root equals root.left
-    End While
-    Return root
-End Function
-
+1. If root == null
+       Return null
+2. While root.left != null
+       root = root.left
+3. Return root
 
 ----------------------------------------------------------
-Function Name: delete(root, key)
+delete(root, key)
 ----------------------------------------------------------
-Precondition: Tree exists.
-Postcondition: Deletes node with specified key, updates tree.
-Time Complexity:
-    Best Case O(log n)
-    Average Case O(log n)
-    Worst Case O(n)
+Precondition: Tree exists
+Postcondition: Deletes node with specified key; updates parent/root pointers
+Time Complexity: Best = O(log n), Average = O(log n), Worst = O(n)
 
-Pseudocode:
-Function delete(root, key)
-    If root is null then
-        Print "Value not found"
-        Return null
-    End If
+1. If root == null
+       Print "Tree empty or value not found"
+       Return null
 
-    If key less than root.data then
-        root.left equals delete(root.left, key)
-    Else if key greater than root.data then
-        root.right equals delete(root.right, key)
-    Else
-        // Node found
-        If root.left is null and root.right is null then
-            Return null
-        Else if root.left is null then
-            Return root.right
-        Else if root.right is null then
-            Return root.left
-        Else
-            successor equals findMin(root.right)
-            root.data equals successor.data
-            root.right equals delete(root.right, successor.data)
-        End If
-    End If
-    Return root
-End Function
+2. If key < root.data
+       root.left = delete(root.left, key)
+       If root.left != null
+           root.left.parent = root
+       Return root
+
+3. Else if key > root.data
+       root.right = delete(root.right, key)
+       If root.right != null
+           root.right.parent = root
+       Return root
+
+4. Else
+       // Node found — handle 3 cases
+       a. If root.left == null AND root.right == null
+              If root.parent != null
+                  If root.parent.left == root
+                      root.parent.left = null
+                  Else
+                      root.parent.right = null
+              Free(root)
+              Return null
+
+       b. Else if root.left == null
+              temp = root.right
+              temp.parent = root.parent
+              Free(root)
+              Return temp
+
+       c. Else if root.right == null
+              temp = root.left
+              temp.parent = root.parent
+              Free(root)
+              Return temp
+
+       d. Else
+              successor = findMin(root.right)
+              root.data = successor.data
+              root.right = delete(root.right, successor.data)
+              If root.right != null
+                  root.right.parent = root
+              Return root
+
+5. Return root
